@@ -43,7 +43,7 @@ export default {
     },
   },
   async mounted() {
-    const resp = await this.$store.dispatch("fetchPhotos", "office");
+    const resp = await this.$store.dispatch("fetchPhotos", "african");
     this.allPhotos = resp;
   },
 };

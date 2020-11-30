@@ -17,8 +17,8 @@ export default {
 <style scoped>
 .hero {
   height: 40vh;
-  background: #ccc;
-  background-image: url("https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200");
+  background: #dde2e9;
+  /* background-image: url("https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
