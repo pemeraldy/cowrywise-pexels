@@ -1,5 +1,5 @@
 <template>
-  <div class="container photo-container mt-4">
+  <div class="container photo-container">
     <div class="row my-3">
       <div class="col-12 text-center ">
         <h3 v-if="searchText">Search reasult for " {{ searchText }} "</h3>
@@ -55,7 +55,6 @@ export default {
 <style scoped>
 #photos {
   min-height: 50vh;
-  margin-top: -120px;
   /* Prevent vertical gaps */
   line-height: 0;
   -webkit-column-count: 4;
@@ -76,6 +75,9 @@ export default {
 }
 #photos img:hover {
   transform: scale(1.03);
+}
+.photo-container {
+  /* margin-top: -400px; */
 }
 
 @media (max-width: 1200px) {
