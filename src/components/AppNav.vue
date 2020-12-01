@@ -4,7 +4,7 @@
       <router-link
         class=" app-name navbar-brand d-block text-center  w-100"
         to="/"
-        >YoPix</router-link
+        >CowryPix</router-link
       >
 
       <div
