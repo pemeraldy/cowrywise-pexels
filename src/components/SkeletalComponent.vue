@@ -1,11 +1,5 @@
 <template>
   <div class="container photo-container mt-4">
-    <div class="row my-3">
-      <div class="col-12 text-center ">
-        <h3>Popular Photos</h3>
-        <!-- <h3 v-else>{{ searchText }} Photos</h3> -->
-      </div>
-    </div>
     <div id="photos">
       <span>
         <img
