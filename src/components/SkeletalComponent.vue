@@ -11,14 +11,11 @@
         <img
           @click="$refs.modalPhoto.showModal(photo)"
           class="thumbnail"
-          v-for="photo in photos"
-          :key="photo.id"
-          :src="photo.src.medium"
-          :alt="photo.photographer"
+          v-for="(photo, index) in skeletals"
+          :key="index"
         />
       </span>
     </div>
-    <main-modal ref="modalPhoto" />
   </div>
 </template>
 
@@ -31,20 +28,8 @@ export default {
   },
   data() {
     return {
-      allPhotos: [],
+      skeletals: 10,
     };
-  },
-  computed: {
-    photos() {
-      return this.$store.getters["getPhotos"];
-    },
-    searchText() {
-      return this.$store.getters["getSearch"];
-    },
-  },
-  async mounted() {
-    const resp = await this.$store.dispatch("fetchPhotos", "african");
-    this.allPhotos = resp;
   },
 };
 </script>
