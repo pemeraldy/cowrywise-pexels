@@ -1,31 +1,18 @@
 <template>
   <div class="container photo-container mt-4">
-    <div class="row my-3">
-      <div class="col-12 text-center ">
-        <h3>Popular Photos</h3>
-        <!-- <h3 v-else>{{ searchText }} Photos</h3> -->
-      </div>
-    </div>
-    <div id="photos">
-      <span>
-        <img
-          @click="$refs.modalPhoto.showModal(photo)"
-          class="thumbnail"
-          v-for="(photo, index) in skeletals"
-          :key="index"
-        />
-      </span>
+    <div id="photos-placeholder">
+      <div
+        class="placeholder pulse"
+        v-for="(photo, index) in skeletals"
+        :key="index"
+      ></div>
     </div>
   </div>
 </template>
 
 <script>
-import MainModal from "./MainModal";
-
 export default {
-  components: {
-    MainModal,
-  },
+  components: {},
   data() {
     return {
       skeletals: 10,
@@ -35,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-#photos {
+#photos-placeholder {
   min-height: 50vh;
   /* Prevent vertical gaps */
   line-height: 0;
@@ -47,27 +34,38 @@ export default {
   column-gap: 50px;
 }
 
-#photos img {
-  width: 100% !important;
-  height: auto !important;
+#photos-placeholder .placeholder {
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;
   transition: all 0.19s ease-in;
+  background: #f6f7f8;
+  height: 300px;
+  width: 300px;
+  animation: pulse 1s infinite ease-in-out;
+  -webkit-animation: pulse 1s infinite ease-in-out;
 }
-#photos img:hover {
-  transform: scale(1.03);
+@keyframes pulse {
+  0% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
+  50% {
+    background-color: rgba(165, 165, 165, 0.3);
+  }
+  100% {
+    background-color: rgba(165, 165, 165, 0.1);
+  }
 }
 
 @media (max-width: 1200px) {
-  #photos {
+  #photos-placeholder {
     -moz-column-count: 4;
     -webkit-column-count: 4;
     column-count: 4;
   }
 }
 @media (max-width: 1000px) {
-  #photos {
+  #photos-placeholder {
     -moz-column-count: 3;
     -webkit-column-count: 3;
     column-count: 3;
@@ -81,7 +79,7 @@ export default {
   }
 }
 @media only screen and (max-width: 400px) {
-  #photos {
+  #photos-placeholder {
     -moz-column-count: 1;
     -webkit-column-count: 1;
     column-count: 1;

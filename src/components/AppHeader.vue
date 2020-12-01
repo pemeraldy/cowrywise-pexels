@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 .hero {
-  height: 40vh;
+  height: 60vh;
   background: #dde2e9;
   background-size: cover;
   background-repeat: no-repeat;

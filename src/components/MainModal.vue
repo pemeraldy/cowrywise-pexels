@@ -9,7 +9,7 @@
       <!-- Modal content -->
       <div class="main-modal__content">
         <div class="modal-header">
-          <span class="app-name">YoPix</span>
+          <span class="app-name">CowryPix</span>
           <span @click.stop="hideModal" class="close">&times;</span>
         </div>
         <div class="main-modal__body">

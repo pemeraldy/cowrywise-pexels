@@ -4,7 +4,7 @@
       v-model="searchText"
       class="form-control search-form w-100 mr-sm-2"
       type="text"
-      placeholder="Search"
+      placeholder="Search for photo"
     />
     <button
       class="btn search-btn btn-large btn-primary my-2 my-sm-0"
@@ -12,9 +12,7 @@
     >
       Search
     </button>
-    <span class="suggestions"
-      >Place, People, Office, Sport... {{ searchText }}</span
-    >
+    <!-- <span class="suggestions">Place, People, Office, Sport..</span> -->
   </form>
 </template>
 

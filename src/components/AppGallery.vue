@@ -1,10 +1,13 @@
 <template>
-  <div class="container photo-container mt-4">
+  <div class="container photo-container">
     <div class="row my-3">
       <div class="col-12 text-center ">
-        <h3>Popular Photos</h3>
-        <!-- <h3 v-else>{{ searchText }} Photos</h3> -->
+        <!-- <h3 v-if="searchText">Search reasult for " {{ searchText }} "</h3> -->
+        <h3>{{ searchStates }}</h3>
       </div>
+    </div>
+    <div class="placeholder" v-show="loadingState">
+      <skeletal-component></skeletal-component>
     </div>
     <div id="photos">
       <span>
@@ -24,14 +27,18 @@
 
 <script>
 import MainModal from "./MainModal";
+import SkeletalComponent from "./SkeletalComponent";
 
 export default {
   components: {
     MainModal,
+    SkeletalComponent,
   },
   data() {
     return {
       allPhotos: [],
+      searchStates: "",
+      loading: true,
     };
   },
   computed: {
@@ -41,10 +48,20 @@ export default {
     searchText() {
       return this.$store.getters["getSearch"];
     },
+    loadingState() {
+      return this.$store.getters["getLoading"];
+    },
   },
   async mounted() {
-    const resp = await this.$store.dispatch("fetchPhotos", "african");
-    this.allPhotos = resp;
+    this.laoding = true;
+    console.log(this.loadingState);
+    try {
+      const resp = await this.$store.dispatch("fetchPhotos", "african");
+      this.allPhotos = resp;
+      this.loading = false;
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
@@ -72,6 +89,9 @@ export default {
 }
 #photos img:hover {
   transform: scale(1.03);
+}
+.photo-container {
+  margin-top: -180px;
 }
 
 @media (max-width: 1200px) {
