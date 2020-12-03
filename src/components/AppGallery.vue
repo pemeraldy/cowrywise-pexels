@@ -3,7 +3,7 @@
     <div class="row my-3">
       <div class="col-12 text-center mt-4 ">
         <h3 v-if="loadingState">Searching for " {{ searchTerm }} "</h3>
-        <h3 v-else>Search Results for {{ searchText }}</h3>
+        <h3 v-else>Search Results for " {{ searchText }} "</h3>
       </div>
     </div>
     <div class="placeholder" v-show="loadingState">
