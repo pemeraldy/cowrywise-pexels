@@ -1,5 +1,9 @@
 <template>
-  <form @submit.prevent="searchPhotos" class="form-inline search-form-wrap">
+  <form
+    id="searchForm"
+    @submit.prevent="searchPhotos"
+    class="form-inline search-form-wrap"
+  >
     <input
       v-model="searchText"
       class="form-control search-form w-100 mr-sm-2"
@@ -63,6 +67,9 @@ export default {
 .search-form-wrap {
   width: 60%;
   position: relative;
+  -webkit-box-shadow: 6px 13px 18px -16px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 6px 13px 18px -16px rgba(0, 0, 0, 0.35);
+  box-shadow: 6px 13px 18px -16px rgba(0, 0, 0, 0.35);
 }
 .search-form.form-control {
   padding: 25px;
