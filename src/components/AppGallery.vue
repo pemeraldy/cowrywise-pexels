@@ -2,15 +2,15 @@
   <div class="container photo-container">
     <div class="row my-3">
       <div class="col-12 text-center ">
-        <!-- <h3 v-if="searchText">Search reasult for " {{ searchText }} "</h3> -->
-        <h3>{{ searchStates }}</h3>
+        <h3 v-if="loadingState">Searching for " {{ searchText }} "</h3>
+        <h3 v-else>Search Results for {{ searchText }}</h3>
       </div>
     </div>
     <div class="placeholder" v-show="loadingState">
       <skeletal-component></skeletal-component>
     </div>
     <div id="photos">
-      <span>
+      <span v-if="photos.length > 0">
         <img
           @click="$refs.modalPhoto.showModal(photo)"
           class="thumbnail"
@@ -20,6 +20,9 @@
           :alt="photo.photographer"
         />
       </span>
+      <div v-else>
+        <h3>No Result Found</h3>
+      </div>
     </div>
     <main-modal ref="modalPhoto" />
   </div>
@@ -53,12 +56,12 @@ export default {
     },
   },
   async mounted() {
-    this.laoding = true;
+    // this.laoding = true;
     console.log(this.loadingState);
     try {
       const resp = await this.$store.dispatch("fetchPhotos", "african");
       this.allPhotos = resp;
-      this.loading = false;
+      // this.loading = false;
     } catch (error) {
       console.log(error);
     }
