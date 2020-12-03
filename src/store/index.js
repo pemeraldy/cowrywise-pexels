@@ -9,7 +9,7 @@ export default new Vuex.Store({
     queryInit:'africans',    
     photos:[],
     totalPhotos:null,
-    search:'',
+    search:'africans',
     currentPage:1,
     loading: false,
     searchEnd: false
