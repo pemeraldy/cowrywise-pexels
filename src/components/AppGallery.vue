@@ -1,9 +1,12 @@
 <template>
   <div class="container photo-container">
     <div class="row my-3">
-      <div class="col-12 text-center mt-4 ">
+      <div class="col-12 text-center mt-4 searched ">
         <h3 v-if="loadingState">Searching for " {{ searchTerm }} "</h3>
-        <h3 v-else>Search Results for " {{ searchText }} "</h3>
+        <h3 v-else>
+          Search Results for "
+          <span class="search-text"> {{ searchText }} </span> "
+        </h3>
       </div>
     </div>
     <div class="placeholder" v-show="loadingState">
@@ -100,6 +103,13 @@ export default {
 }
 .photo-container {
   margin-top: -180px;
+}
+.searched {
+  color: #354765;
+}
+.search-text {
+  color: #354765;
+  opacity: 0.6;
 }
 
 .not-found {
