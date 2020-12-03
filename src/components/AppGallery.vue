@@ -1,16 +1,16 @@
 <template>
   <div class="container photo-container">
     <div class="row my-3">
-      <div class="col-12 text-center ">
-        <h3 v-if="loadingState">Searching for " {{ searchText }} "</h3>
+      <div class="col-12 text-center mt-4 ">
+        <h3 v-if="loadingState">Searching for " {{ searchTerm }} "</h3>
         <h3 v-else>Search Results for {{ searchText }}</h3>
       </div>
     </div>
     <div class="placeholder" v-show="loadingState">
       <skeletal-component></skeletal-component>
     </div>
-    <div id="photos">
-      <span v-if="photos.length > 0">
+    <div id="photos" v-if="photos.length > 0">
+      <span>
         <img
           @click="$refs.modalPhoto.showModal(photo)"
           class="thumbnail"
@@ -20,8 +20,10 @@
           :alt="photo.photographer"
         />
       </span>
-      <div v-else>
-        <h3>No Result Found</h3>
+    </div>
+    <div v-else>
+      <div class="not-found">
+        <img src="@/assets/notfound.jpg" alt="not found" />
       </div>
     </div>
     <main-modal ref="modalPhoto" />
@@ -40,7 +42,7 @@ export default {
   data() {
     return {
       allPhotos: [],
-      searchStates: "",
+      searchTerm: "",
       loading: true,
     };
   },
@@ -53,6 +55,9 @@ export default {
     },
     loadingState() {
       return this.$store.getters["getLoading"];
+    },
+    searchend() {
+      return this.$store.getters["getSearchend"];
     },
   },
   async mounted() {
@@ -97,6 +102,11 @@ export default {
   margin-top: -180px;
 }
 
+.not-found {
+  width: 100% important;
+  margin-bottom: -20px;
+  text-align: center;
+}
 @media (max-width: 1200px) {
   #photos {
     -moz-column-count: 4;
